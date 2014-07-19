@@ -37,6 +37,6 @@ exports.validate= function(req, res){
   }
   else
   {
-  	res.status(200).send('<?xml version="1.0" encoding="utf-8"?>\r\n<Redirect>\r\n<Success>true</Success>\r\n</Redirect>').end();
+  	res.status(200).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Redirect>\r\n<Success>true</Success>\r\n</Redirect>');
   }
 };
