@@ -3,6 +3,17 @@
  * GET home page.
  */
 
+Boolean.parse = function (str) {
+  switch (str.toLowerCase ()) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    default:
+      throw new Error ("Boolean.parse: Cannot convert string to boolean.");
+  }
+};
+
 exports.location= function(req, res){
   code = req.params['code'];
   isPositive = req.params['isPositive'];
@@ -12,7 +23,7 @@ exports.location= function(req, res){
 exports.validate= function(req, res){
   verb = req.params['verb'];
   code = req.params['code'];
-  isPositive = req.params['isPositive'];
+  isPositive = Boolean.parse(req.params['isPositive']);
   res.set('Cache-Control', 'no-store');
   res.set('Content-type', 'text/xml');
   if (req.method != verb)
