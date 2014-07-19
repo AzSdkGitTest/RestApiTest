@@ -32,7 +32,7 @@ exports.validate= function(req, res){
   }
   else if (!isPositive)
   {
-  	res.status(400).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>ExpectedNegative</Code><Message>This is an expected negative response which shoudl create an expected exception</Message></Error>');
+  	res.status(400).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>ExpectedNegative</Code><Message>This is an expected negative response which should create an expected exception</Message></Error>');
   	
   }
   else
