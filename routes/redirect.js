@@ -28,11 +28,11 @@ exports.validate= function(req, res){
   res.set('Content-type', 'text/xml');
   if (req.method != verb)
   {
-  	res.status(400).send('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>BadVerb</Code><Message>TReceived bad verb ' + req.method + '</Message></Error>').end();
+  	res.status(400).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>BadVerb</Code><Message>Received bad verb ' + req.method + '</Message></Error>');
   }
-  if (!isPositive)
+  else if (!isPositive)
   {
-  	res.status(400).send('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>ExpectedNegative</Code><Message>This is an expected negative response which shoudl create an expected exception</Message></Error>').end();
+  	res.status(400).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Error>\r\n<Code>ExpectedNegative</Code><Message>This is an expected negative response which shoudl create an expected exception</Message></Error>');
   	
   }
   else
