@@ -33,6 +33,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.all('*', function (req, res, next) {
+    res.set('Connection', 'close');
+    next();
+});
 app.all('/success/code/:code', success.noContent);
 app.all('/content/code/:code', success.content);
 

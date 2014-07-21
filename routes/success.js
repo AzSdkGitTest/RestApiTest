@@ -13,4 +13,5 @@ exports.content= function(req, res){
 exports.noContent= function(req, res){
   code = req.params['code'];
   res.status(code).end();
+  console.log(res)
 };
