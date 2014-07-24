@@ -15,15 +15,15 @@ Boolean.parse = function (str) {
 };
 
 exports.location= function(req, res){
-  code = req.params['code'];
-  isPositive = req.params['isPositive'];
+  var code = req.params['code'];
+  var isPositive = req.params['isPositive'];
   res.redirect(parseInt(code), '/redirectend/verb/' + req.method + '/positive/' + isPositive);
 };
 
 exports.validate= function(req, res){
-  verb = req.params['verb'];
-  code = req.params['code'];
-  isPositive = Boolean.parse(req.params['isPositive']);
+  var verb = req.params['verb'];
+  var code = req.params['code'];
+  var isPositive = Boolean.parse(req.params['isPositive']);
   res.set('Cache-Control', 'no-store');
   res.set('Content-type', 'text/xml');
   if (req.method != verb)
@@ -37,6 +37,13 @@ exports.validate= function(req, res){
   }
   else
   {
-  	res.status(200).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Redirect>\r\n<Success>true</Success>\r\n</Redirect>');
+  	if (verb === "HEAD")
+  	{
+  		res.status(204).end();
+  	}
+  	else 
+    {
+  		res.status(200).end('<?xml version="1.0" encoding="utf-8"?>\r\n<Redirect>\r\n<Success>true</Success>\r\n</Redirect>');
+  	}
   }
 };

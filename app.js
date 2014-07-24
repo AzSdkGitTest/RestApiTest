@@ -43,9 +43,10 @@ app.all('/content/code/:code', success.content);
 app.all('/redirectstart/code/:code/positive/:isPositive', redirect.location);
 app.all('/redirectend/verb/:verb/positive/:isPositive', redirect.validate);
 
-app.all('/client/code/:code/message/:message', clientError.content);
+app.all('/client/code/:code/detailCode/:detailCode/message/:message', clientError.content);
 
-app.all('/server/code/:code/message/:message', serverError.content);
+app.all('/server/code/:code/detailCode/:detailCode/message/:message/tries/:tries', serverError.contentRetry)
+app.all('/server/code/:code/detailCode/:detailCode/message/:message', serverError.content);
 app.all('/server', serverError.http);
 
 
