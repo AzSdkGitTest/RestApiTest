@@ -11,6 +11,7 @@ var redirect = require('./routes/redirect');
 var success = require('./routes/success');
 var clientError= require('./routes/clienterror');
 var serverError = require('./routes/servererror');
+var uriHandler = require('./routes/urihandler');
 var http = require('http');
 var path = require('path');
 
@@ -37,6 +38,14 @@ app.all('*', function (req, res, next) {
     res.set('Connection', 'close');
     next();
 });
+
+app.get('/uris/*', uriHandler.content);
+app.post('/uris/*', uriHandler.queryObject);
+app.get('/urioptional', uriHandler.baseOption);
+app.get('/urioptional/params1/:params1', uriHandler.firstParam);
+app.get('/urioptional/params2/:params2', uriHandler.secondParam);
+app.get('/urioptional/params1/:params1/params2/:params2', uriHandler.bothParams);
+
 app.all('/success/code/:code', success.noContent);
 app.all('/content/code/:code', success.content);
 
